@@ -1,10 +1,13 @@
 import React from 'react'
 
-import Emojies from './DataSheet.js'
-
-const DisplatEmojise = () => {
+const DisplatEmojise = (props) => {
 
     let DisplayEachEmoji = (props) => {
+
+        let handelDelete = () =>{
+            // alert(`delete called by ${props.index}`)
+            props.onDelete(props.index)
+        }
 
         return (
             <div key={props.index} className="col-3">
@@ -12,6 +15,13 @@ const DisplatEmojise = () => {
                     <h2>{props.emoji.icon}</h2>
                     <h3>{props.emoji.name}</h3>
                     <p>{props.emoji.discription}</p>
+
+                    <div className='my-2 d-flex gap-2 justify-content-center align-items-center'>
+                        <button onClick={handelDelete} className='btn btn-danger'>
+                            Delete
+                        </button>
+                    </div>
+
                 </div>
             </div>
         )
@@ -24,9 +34,9 @@ const DisplatEmojise = () => {
                 <div className="container">
                     <div className='row gap-3 justify-content-center'>
                         {
-                            Emojies.map((emoji, index) => {
+                            props.array.map((emoji, index) => {
                                 return (
-                                    < DisplayEachEmoji emoji={emoji} index={index} />
+                                    < DisplayEachEmoji emoji={emoji} index={index} onDelete={props.onDelete}/>
                                 )
                             })
                         }

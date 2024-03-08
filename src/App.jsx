@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 // import bootstarp for all components
 
@@ -13,11 +13,25 @@ import AddEmoji from './components/AddEmoji'
 import DisplatEmojise from './components/DisplatEmojise'
 
 const App = () => {
+
+  let [emojies , setEmojies] = useState([])
+
+  let DeleteEmoji = (id) =>{
+    alert(id)
+
+    setEmojies(()=>{
+      return emojies.filter((emoji,index)=>{
+        return id != index
+      })
+    })
+
+  } 
+
   return (
     <>
         <Navbar />
-        <AddEmoji />
-        <DisplatEmojise />
+        <AddEmoji array={emojies} arrayHandeler={setEmojies}/>
+        <DisplatEmojise array={emojies} onDelete={DeleteEmoji} />
     </>
   )
 }

@@ -1,23 +1,22 @@
 import React, { useState } from 'react'
 
-import Emojies from './DataSheet.js'
-
-const AddEmoji = () => {
+const AddEmoji = (props) => {
 
     let [emoji , SetEmoji] = useState({
         icon: "",
         name: "",
-        discription: ""
+        discription: "",
     })
 
     let handelSubmit = (event) =>{
         event.preventDefault()
         console.log(emoji)
 
-        Emojies.push(emoji)
+        props.arrayHandeler((prev)=>{
+            return [...prev , emoji]
+        })
 
-        console.log(Emojies)
-
+        console.log(props.array)
     }
 
     let handelChange = (event) =>{
