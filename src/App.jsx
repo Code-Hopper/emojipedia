@@ -14,24 +14,33 @@ import DisplatEmojise from './components/DisplatEmojise'
 
 const App = () => {
 
-  let [emojies , setEmojies] = useState([])
+  let [emojies, setEmojies] = useState([])
 
-  let DeleteEmoji = (id) =>{
-    alert(id)
+  let DeleteEmoji = (id) => {
+    // alert(id)
 
-    setEmojies(()=>{
-      return emojies.filter((emoji,index)=>{
-        return id != index
+    setEmojies(() => {
+      return emojies.filter((emoji, index) => {
+        return id !== index
       })
     })
+  }
 
-  } 
+  let UpdateEmoji = (id, newEmoji) => {
+
+    // alert()
+
+    emojies[id] = newEmoji
+
+    console.log(emojies)
+
+  }
 
   return (
     <>
-        <Navbar />
-        <AddEmoji array={emojies} arrayHandeler={setEmojies}/>
-        <DisplatEmojise array={emojies} onDelete={DeleteEmoji} />
+      <Navbar />
+      <AddEmoji array={emojies} arrayHandeler={setEmojies} />
+      <DisplatEmojise array={emojies} onDelete={DeleteEmoji} onUpdate={UpdateEmoji} />
     </>
   )
 }
