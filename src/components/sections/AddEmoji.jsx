@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 import {emojies} from "../Data.js"
 
-const AddEmoji = () => {
+const AddEmoji = (props) => {
 
 
   let [emojiData, setEmojiData] = useState({
@@ -32,10 +32,10 @@ const AddEmoji = () => {
 
   let handelSubmitForm = (e) => {
     e.preventDefault()
-    emojies.unshift(emojiData)
-    console.log(emojies)
+    // emojies.unshift(emojiData)
+    // console.log(emojies)
     console.log(emojiData)
-
+    props.call(emojiData)
   }
 
   return (

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 // import sample data from Data.js
 
@@ -20,16 +20,19 @@ let displayEmojies = (props) => {
     )
 }
 
-const EmojiGrid = () => {
+const EmojiGrid = (props) => {
+
+
     return (
         <>
             <div className='container-fluid'>
                 <div className="container">
                     <div className="row gap-3 justify-content-center py-5">
 
+                      
                         {/* display all emojies from the array of emojies */}
                         {
-                            emojies.map(displayEmojies)
+                            props.data.map(displayEmojies)
                         }
 
                     </div>
