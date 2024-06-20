@@ -44,7 +44,11 @@ const App = () => {
     let callFromAdd = (emoji) => {
         // alert("called from Add Emojies")
         console.log("this is app.jsx and emoji is : ")
+
+        emoji.id = emojies[emojies.length - 1].id + 1
+
         console.log(emoji)
+
         setEmojies((prev) => {
             return (
                 [...prev, emoji]
